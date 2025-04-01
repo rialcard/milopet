@@ -28,10 +28,10 @@ const appendToSheet = async (data) => {
         const auth = new google.auth.GoogleAuth({
             credentials: {
                 client_email: process.env.CLIENT_EMAIL,
-                private_key: process.env.PRIVATE_KEY,
+                private_key: process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
             },
             scopes: ['https://www.googleapis.com/auth/spreadsheets']
-        });
+        });      
 
         const authClient = await auth.getClient();
         const spreadsheetId = '1ZBU7NZtPPxW3bYBj0xwPcPWKsQL2buXPCRq9axJrY60';
